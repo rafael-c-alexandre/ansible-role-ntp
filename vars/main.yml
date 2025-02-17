@@ -1,0 +1,3 @@
+---
+ntp_package: systemd-timesyncd
+ntp_tzdata_package: tzdata

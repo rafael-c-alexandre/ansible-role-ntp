@@ -1,0 +1,28 @@
+---
+- name: Update apt cache.
+  package:
+    update_cache: true
+    cache_valid_time: 600
+
+- name: Ensure ntp related packages are installed.
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ ntp_package }}"
+    - "{{ ntp_tzdata_package }}"
+    - cron
+
+- name: Ensure ntp service is started and enabled at boot.
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  with_items:
+    - "{{ ntp_package }}"
+    - cron
+
+- name: Set timezone.
+  timezone:
+    name: "{{ ntp_timezone }}"
+  notify: restart crond
