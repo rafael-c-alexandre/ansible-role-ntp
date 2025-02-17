@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  role_name: ntp
+  author: rafael-c-alexandre
+  description: Install and configure NTP in debian servers
+  license: MIT
+  min_ansible_version: "2.18"
+  platforms:
+    - name: Debian
+  galaxy_tags:
+    - ntp
+    - timesyncd
+    - tzdata
+    - cron
+    - debian
+dependencies: []
